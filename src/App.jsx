@@ -41,7 +41,7 @@ return (
             </div>
           </div>
         </Box>
-        <span>  % button is not working</span>
+        <span className="absolute bottom-14 text-yellow-500 text-sm px-10 "> sory to say " % " button is not working</span>
     </div>
     </Flex>
   </>
