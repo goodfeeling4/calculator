@@ -32,15 +32,17 @@ function App() {
 return (
   <>
     <Flex>
-      <Box>
-        <div>
-          <Input result={result} />
+      <div>
+        <Box>
           <div>
-            <Button buttonclick={buttonclick} />
+            <Input result={result} />
+            <div>
+              <Button buttonclick={buttonclick} />
+            </div>
           </div>
-        </div>
-      </Box>
-    <span>  % button is not working</span>
+        </Box>
+        <span>  % button is not working</span>
+    </div>
     </Flex>
   </>
 );
