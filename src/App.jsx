@@ -40,7 +40,9 @@ return (
           </div>
         </div>
       </Box>
+    
     </Flex>
+    <span> % button is not working</span>
   </>
 );
 }
