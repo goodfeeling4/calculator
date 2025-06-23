@@ -1,9 +1,5 @@
-// import { IoBackspaceOutline } from "react-icons/io5";
-
 function Button({buttonclick}) {
-  
   const num = ["%","CE","(",")",7,8,9,"*",4,5,6,"+",1,2,3,"-","00",0,"=","/",];
-
   return (
     <div>
          <div className="grid grid-flow-row grid-cols-4 justify-center items-center bg-inherit   h-96 w-72 gap-3 p-3 ">

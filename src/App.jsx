@@ -1,52 +1,39 @@
-// Filename - App.js
+
 import Button from "./component/Button";
-import Box from "./component/Box";
-import Flex from "./component/Flex";
 import Input from "./component/Input";
 import { useState } from "react";
-// import { PiToteLight } from "react-icons/pi";
-// import React from "react";
 
 function App() {
-  // let intext = intext => console.log(intext)
   let [result, setresult] = useState("")
-
   let buttonclick = (value) => {
-    if (value === "CE") { 
+    if (value === "CE") {
       setresult("")
     }
     else if (value === "=") {
       let total = eval(result)
       setresult(total)
-      
+
 
     }
-  else {
-    result += value
-    setresult(result)
+    else {
+      result += value
+      setresult(result)
     }
 
-}
+  }
 
 
-return (
-  <>
-    <Flex>
-      <div>
-        <Box>
-          <div>
-            <Input result={result} />
-            <div>
-              <Button buttonclick={buttonclick} />
-            </div>
-          </div>
-        </Box>
-        <span className="absolute bottom-14 text-yellow-500 text-sm px-10 "> sory to say " % " button is not working</span>
-    </div>
-    </Flex>
-  </>
-);
+  return (
+    <>
+      <div className="flex justify-center items-center bg-slate-500 h-[100vh] w-[100vw]">
+        <div className="shadow-current shadow-2xl drop-shadow-2xl place-content-center place-items-center h-[500px] w-[300px] border rounded-lg ">
+          <Input result={result} />
+          <Button buttonclick={buttonclick} />
+        </div>
+      </div>
+    </>
+  );
 }
-// import Box from "./component/Box";/
+
 
 export default App;
