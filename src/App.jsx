@@ -1,27 +1,42 @@
-
 import Button from "./component/Button";
 import Input from "./component/Input";
 import { useState } from "react";
+import { evaluate } from "mathjs";
 
 function App() {
-  let [result, setresult] = useState("")
+  let [result, setresult] = useState("");
+  let [isResult, setIsResult] = useState(false);
+
   let buttonclick = (value) => {
     if (value === "CE") {
-      setresult("")
+      setresult("");
+      setIsResult(false);
+    } else if (value === "=") {
+      try {
+        let total = evaluate(result);
+        if (total === Infinity || total === -Infinity) {
+          setresult("Infinity");
+        } else {
+          setresult(total.toString());
+        }
+        setresult(total.toString());
+        setIsResult(true);
+      } catch {
+        setresult("Error");
+        setIsResult(true);
+      }
+    } else if (value === "*" || value === "/" || value === "+" || value === "-") {
+      setresult(result + value);
+      setIsResult(false);
+    } else {
+      if (isResult) {
+        setresult(value.toString());
+        setIsResult(false);
+      } else {
+        setresult(result + value);
+      }
     }
-    else if (value === "=") {
-      let total = eval(result)
-      setresult(total)
-
-
-    }
-    else {
-      result += value
-      setresult(result)
-    }
-
-  }
-
+  };
 
   return (
     <>
@@ -34,6 +49,5 @@ function App() {
     </>
   );
 }
-
 
 export default App;
