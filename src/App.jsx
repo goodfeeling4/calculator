@@ -6,13 +6,17 @@ import { evaluate } from "mathjs";
 function App() {
   let [result, setresult] = useState("");
   let [isResult, setIsResult] = useState(false);
-
+  
+  
   let buttonclick = (value) => {
-    if (value === "CE") {
+    if (value === "Clear") {
       setresult("");
       setIsResult(false);
     } else if (value === "=") {
       try {
+        if ((result.match(/\(/g) || []).length > (result.match(/\)/g) || []).length) {
+          result += ")";
+        }
         let total = evaluate(result);
         if (total === Infinity || total === -Infinity) {
           setresult("Infinity");
@@ -25,7 +29,10 @@ function App() {
         setresult("Error");
         setIsResult(true);
       }
-    } else if (value === "*" || value === "/" || value === "+" || value === "-") {
+    } else if (value === "x") {
+      setresult(result + "*");
+      setIsResult(false);
+    } else if (value === "/" || value === "+" || value === "-") {
       setresult(result + value);
       setIsResult(false);
     } else {
@@ -37,11 +44,10 @@ function App() {
       }
     }
   };
-
   return (
     <>
       <div className="flex justify-center items-center bg-slate-500 h-[100vh] w-[100vw]">
-        <div className="shadow-current shadow-2xl drop-shadow-2xl place-content-center place-items-center h-[500px] w-[300px] border rounded-lg ">
+        <div className="shadow-current shadow-2xl drop-shadow-2xl place-content-center place-items-center  border rounded-lg ">
           <Input result={result} />
           <Button buttonclick={buttonclick} />
         </div>
@@ -49,5 +55,4 @@ function App() {
     </>
   );
 }
-
 export default App;
